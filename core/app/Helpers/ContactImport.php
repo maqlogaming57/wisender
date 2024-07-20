@@ -24,7 +24,10 @@ class ContactImport implements ToCollection
     {
 
         // Log::info($collection);
-        foreach ($collection as $row) {
+        foreach ($collection as $index => $row) {
+            if ($index == 0) {
+                continue;
+            }
             if (Contact::where([
                 'user_id' => $this->user,
                 'session_id' => $this->session_id,
