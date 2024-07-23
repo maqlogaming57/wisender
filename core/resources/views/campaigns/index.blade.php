@@ -117,6 +117,7 @@
                                                 <select name="message_type" required class="form-select">
                                                     <option value="">-- Select One --</option>
                                                     <option value="text">Text Message</option>
+                                                    <option value="textbaghas">Message Baghas</option>
                                                     <option value="media">Media Message</option>
                                                     <option value="button">Button Message</option>
                                                     <option value="list">List Button Message</option>

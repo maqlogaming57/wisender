@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('name')->nullable();
             $table->string('number');
             $table->string('billing');
+            $table->string('dob');
+            $table->string('nodep');
+            $table->string('baghas');
             $table->timestamps();
         });
     }

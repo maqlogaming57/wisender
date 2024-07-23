@@ -44,6 +44,9 @@
                             <th>Name</th>
                             <th>Number</th>
                             <th>Billing</th>
+                            <th>DOB</th>
+                            <th>Nodep</th>
+                            <th>Baghas</th>
                             <th>Type</th>
                         </tr>
                     </thead>
@@ -137,6 +140,15 @@
                     },
                     {
                         data: 'billing'
+                    },
+                    {
+                        data: 'dob'
+                    },
+                    {
+                        data: 'nodep'
+                    },
+                    {
+                        data: 'baghas'
                     },
                     {
                         data: 'type'

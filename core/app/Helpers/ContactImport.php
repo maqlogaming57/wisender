@@ -42,6 +42,9 @@ class ContactImport implements ToCollection
                 'name' => $row[0],
                 'number' => (string)$row[1],
                 'billing' => (string)$row[2],
+                'dob' => (string)$row[3],
+                'nodep' => (string)$row[4],
+                'baghas' => (string)$row[5]
             ]);
         }
     }

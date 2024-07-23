@@ -202,6 +202,15 @@ class Bulk extends CampaignsDatabase {
         while (message.includes("{billing}")) {
             message = message.replace("{billing}", row.receiver_billing);
         }
+        while (message.includes("{dob}")) {
+            message = message.replace("{dob}", row.dob);
+        }
+        while (message.includes("{nodep}")) {
+            message = message.replace("{nodep}", row.nodep);
+        }
+        while (message.includes("{baghas}")) {
+            message = message.replace("{baghas}", row.baghas);
+        }
 
         // ex string {{Hai|Hello}} then random choose
         const regex = /\{\{(.+?)\}\}/g;

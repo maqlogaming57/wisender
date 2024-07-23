@@ -233,6 +233,18 @@ module.exports = {
                     type: DataTypes.STRING,
                     allowNull: true,
                 },
+                dob: {
+                    type: DataTypes.STRING,
+                    allowNull: true,
+                },
+                nodep: {
+                    type: DataTypes.STRING,
+                    allowNull: true,
+                },
+                baghas: {
+                    type: DataTypes.STRING,
+                    allowNull: true,
+                },
                 message_type: {
                     type: DataTypes.STRING,
                     allowNull: false,

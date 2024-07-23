@@ -69,8 +69,8 @@
                             <select class="form-select" disabled>
                                 @if ($row->message_type == 'text')
                                     <option selected>Text Message</option>
-                                @elseif ($row->message_type == 'textbirthday')
-                                    <option seected>Text Bithday</option>
+                                @elseif ($row->message_type == 'textbaghas')
+                                    <option seected>Text Baghas</option>
                                 @elseif ($row->message_type == 'media')
                                     <option selected>Media Message</option>
                                 @elseif ($row->message_type == 'button')
@@ -107,13 +107,7 @@
                     @if ($row->message_type == 'text')
                         <div class="col-12">
                             <div class="mb-3"><label class="form-label">Message</label>
-                                <textarea name="message" rows="6" class="form-control" required disabled>{!! $data->message !!}</textarea>
-                            </div>
-                        </div>
-                    @elseif ($row->message_type == 'textbirthday')
-                        <div class="col-12">
-                            <div class="mb-3"><label class="form-label">Message Birthday</label>
-                                <textarea name="message" rows="6" class="form-control" required disabled>{!! $data->message !!}</textarea>
+                                <textarea name="message" rows="10" class="form-control" required disabled>{!! $data->message !!}</textarea>
                             </div>
                         </div>
                     @elseif ($row->message_type == 'media')
