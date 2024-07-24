@@ -38,14 +38,14 @@ class Bulk extends CampaignsDatabase {
             let getbulk = await new BulksDatabase().getBulk(
                 this.current_campaign.id
             );
-            if (getbulk.length === 0) {
-                this.campaigns_runing = "none";
-                await new CampaignsDatabase().updateCampaign(
-                    this.current_campaign.id,
-                    "completed"
-                );
-                return;
-            }
+            // if (getbulk.length === 0) {
+            //     this.campaigns_runing = "none";
+            //     await new CampaignsDatabase().updateCampaign(
+            //         this.current_campaign.id,
+            //         "completed"
+            //     );
+            //     return;
+            // }
             let delay = this.current_campaign.delay * 1000;
             if (this.current_campaign.status === "waiting")
                 await new CampaignsDatabase().updateCampaign(
@@ -79,12 +79,12 @@ class Bulk extends CampaignsDatabase {
                     message: this.current_campaign.message,
                 });
 
-                // if (i === getbulk.length - 1) {
-                //     this.campaigns_runing = 'none';
-                //     // console.log('Campaigns completed.');
-                //     // await new CampaignsDatabase().updateCampaign(this.current_campaign.id, 'completed');
-                //     break
-                // }
+                if (i === getbulk.length - 1) {
+                    this.campaigns_runing = 'none';
+                    console.log('Campaigns completed.');
+                    await new CampaignsDatabase().updateCampaign(this.current_campaign.id, 'completed');
+                    break
+                }
                 await new Promise((resolve) =>
                     setTimeout(resolve, parseInt(delay))
                 );
