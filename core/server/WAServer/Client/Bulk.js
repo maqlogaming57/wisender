@@ -28,7 +28,7 @@ class Bulk extends CampaignsDatabase {
 
         eventEmitter.on("campaigns", async (res) => {
             if (res !== this.session) return;
-            // console.log('triger-campaigns');
+            console.log('triger-campaigns');
             return this.set_cron_schedule();
         });
     }
@@ -60,7 +60,7 @@ class Bulk extends CampaignsDatabase {
                     break;
                 }
                 if (this.campaigns_runing !== row.campaign_id) {
-                    // console.log('campaign changed');
+                    console.log('campaign changed');
                     this.campaigns_runing = "none";
                     break;
                 }
@@ -72,19 +72,19 @@ class Bulk extends CampaignsDatabase {
                     continue;
                 }
 
-                // console.log('Sending bulk to ' + row.receiver);
+                console.log('Sending bulk to ' + row.receiver);
                 await this.sendMessage({
                     ilsya: client,
                     row: row,
                     message: this.current_campaign.message,
                 });
 
-                if (i === getbulk.length - 1) {
-                    this.campaigns_runing = 'none';
-                    console.log('Campaigns completed.');
-                    await new CampaignsDatabase().updateCampaign(this.current_campaign.id, 'completed');
-                    break
-                }
+                // if (i === getbulk.length - 1) {
+                //     this.campaigns_runing = 'none';
+                //     console.log('Campaigns completed.');
+                //     await new CampaignsDatabase().updateCampaign(this.current_campaign.id, 'completed');
+                //     break
+                // }
                 await new Promise((resolve) =>
                     setTimeout(resolve, parseInt(delay))
                 );
@@ -106,6 +106,17 @@ class Bulk extends CampaignsDatabase {
                         this.bulkdb.updateBulk(row.id, "failed");
                     });
                 break;
+                case "textbaghas":
+                    ilsya
+                        .sendText(this.filterMessage(data.message, row))
+                        .then(() => {
+                            this.bulkdb.updateBulk(row.id, "sent");
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                            this.bulkdb.updateBulk(row.id, "failed");
+                        });
+                    break;
             case "media":
                 let opts = { file: { mimetype: `${data.media_type}` } };
                 ilsya
