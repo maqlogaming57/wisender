@@ -69,8 +69,10 @@
                             <select class="form-select" disabled>
                                 @if ($row->message_type == 'text')
                                     <option selected>Text Message</option>
+                                @if ($row->message_type == 'textbill')
+                                    <option selected>Bill Message</option>
                                 @elseif ($row->message_type == 'textbaghas')
-                                    <option seected>Text Baghas</option>
+                                    <option seected>Baghas Message</option>
                                 @elseif ($row->message_type == 'media')
                                     <option selected>Media Message</option>
                                 @elseif ($row->message_type == 'button')

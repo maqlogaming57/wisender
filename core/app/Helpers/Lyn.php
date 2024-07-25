@@ -60,31 +60,43 @@ class Lyn
                 'message' => $request->message,
             );
 
-            if($request->quoted == 'yes'){
+            if ($request->quoted == 'yes') {
                 $data['quoted'] = $request->quoted;
             }
 
             $table->message = json_encode($data);
             $table->save();
-        }
-        else if ($msg_type == 'textbaghas') {
+        } else if ($msg_type == 'textbill') {
             $request->validate([
                 'message' => 'required',
             ]);
-    
+
             $data = [
                 'message' => $request->message,
             ];
-    
+
             if ($request->quoted == 'yes') {
                 $data['quoted'] = $request->quoted;
             }
-    
+
             $table->message = json_encode($data);
             $table->save();
-    
-        }     
-        else if ($msg_type == 'media') {
+        } else if ($msg_type == 'textbaghas') {
+            $request->validate([
+                'message' => 'required',
+            ]);
+
+            $data = [
+                'message' => $request->message,
+            ];
+
+            if ($request->quoted == 'yes') {
+                $data['quoted'] = $request->quoted;
+            }
+
+            $table->message = json_encode($data);
+            $table->save();
+        } else if ($msg_type == 'media') {
             $request->validate([
                 'media' => 'required',
             ]);
@@ -94,7 +106,7 @@ class Lyn
                 'caption' => $request->message ?? '',
             );
 
-            if($request->quoted == 'yes'){
+            if ($request->quoted == 'yes') {
                 $data['quoted'] = $request->quoted;
             }
 

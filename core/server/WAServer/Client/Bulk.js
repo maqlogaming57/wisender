@@ -106,6 +106,17 @@ class Bulk extends CampaignsDatabase {
                         this.bulkdb.updateBulk(row.id, "failed");
                     });
                 break;
+                case "textbill":
+                ilsya
+                    .sendText(this.filterMessage(data.message, row))
+                    .then(() => {
+                        this.bulkdb.updateBulk(row.id, "sent");
+                    })
+                    .catch((e) => {
+                        console.log(e);
+                        this.bulkdb.updateBulk(row.id, "failed");
+                    });
+                break;
                 case "textbaghas":
                     ilsya
                         .sendText(this.filterMessage(data.message, row))
