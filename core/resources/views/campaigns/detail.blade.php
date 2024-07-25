@@ -107,13 +107,13 @@
                     @if ($row->message_type == 'text')
                         <div class="col-12">
                             <div class="mb-3"><label class="form-label">Message</label>
-                                <textarea name="message" rows="10" class="form-control" required disabled>{!! $data->message !!}</textarea>
+                                <textarea name="message" rows="20" class="form-control" required disabled>{!! $data->message !!}</textarea>
                             </div>
                         </div>
                     @elseif ($row->message_type == 'textbaghas')
                     <div class="col-12">
                         <div class="mb-3"><label class="form-label">Message</label>
-                            <textarea name="message" rows="10" class="form-control" required disabled>{!! $data->message !!}</textarea>
+                            <textarea name="message" rows="20" class="form-control" required disabled>{!! $data->message !!}</textarea>
                         </div>
                     </div>
                     @elseif ($row->message_type == 'media')
