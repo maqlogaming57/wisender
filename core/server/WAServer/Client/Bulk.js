@@ -69,6 +69,7 @@ class Bulk extends CampaignsDatabase {
                 // if is not whatsapp number
                 if (!(await client.isWhatsapp(row.receiver))) {
                     await this.bulkdb.updateBulk(row.id, "invalid");
+
                     continue;
                 }
 
