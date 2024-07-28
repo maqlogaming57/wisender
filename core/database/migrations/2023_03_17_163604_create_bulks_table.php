@@ -20,9 +20,11 @@ return new class extends Migration
             $table->string('receiver');
             $table->string('receiver_billing');
             $table->string('message_type');
-            $table->string('dob');
+            $table->string('tgljt');
             $table->string('nodep');
             $table->string('baghas');
+            $table->string('dob');
+            $table->string('age');
             $table->longText('message');
             $table->enum('status', ['sent', 'invalid', 'failed', 'pending'])->default('pending');
             $table->timestamps();

@@ -16,7 +16,8 @@
                 </div>
                 <ul class="navbar-nav ms-lg-auto">
                     <li class="nav-item">
-                        <button class="btn btn-label-danger me-3 mb-xl-0 mb-lg-0 mb-2 is-phonebook-delete" id="is-label-delete">
+                        <button class="btn btn-label-danger me-3 mb-xl-0 mb-lg-0 mb-2 is-phonebook-delete"
+                            id="is-label-delete">
                             <i class="ti ti-trash me-1" style="margin-top: -2px"></i>
                             Delete PhoneBook
                         </button>
@@ -44,9 +45,11 @@
                             <th>Name</th>
                             <th>Number</th>
                             <th>Billing</th>
-                            <th>DOB</th>
+                            <th>jatuh Tempo</th>
                             <th>Nodep</th>
                             <th>Baghas</th>
+                            <th>DOB</th>
+                            <th>Age</th>
                             <th>Type</th>
                         </tr>
                     </thead>
@@ -67,12 +70,15 @@
                         <div class="row">
                             <div class="col-12 mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter Name" autocomplete="off" />
+                                <input type="text" name="name" class="form-control" placeholder="Enter Name"
+                                    autocomplete="off" />
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="form-label">Number</label>
-                                <input type="text" name="number" class="form-control" placeholder="Enter Number ex: 6285xxxxxxx" required />
-                                <small>You can enter whatsapp number or whatsapp group id as long as your bot has joined the group. or you can use sync groups to retrieve the groups you entered.</small>
+                                <input type="text" name="number" class="form-control"
+                                    placeholder="Enter Number ex: 6285xxxxxxx" required />
+                                <small>You can enter whatsapp number or whatsapp group id as long as your bot has joined the
+                                    group. or you can use sync groups to retrieve the groups you entered.</small>
                             </div>
                         </div>
                     </div>
@@ -94,7 +100,8 @@
                     <h5 class="modal-title" id="modalCenterTitle">Import Contact <small>xlsx</small></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="form-contacts-import" action="{!! route('phonebook.contacts.import', $label->id) !!}" method="post" enctype="multipart/form-data">
+                <form id="form-contacts-import" action="{!! route('phonebook.contacts.import', $label->id) !!}" method="post"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="row">
@@ -142,13 +149,19 @@
                         data: 'billing'
                     },
                     {
-                        data: 'dob'
+                        data: 'tgljt'
                     },
                     {
                         data: 'nodep'
                     },
                     {
                         data: 'baghas'
+                    },
+                    {
+                        data: 'dob'
+                    },
+                    {
+                        data: 'age'
                     },
                     {
                         data: 'type'
@@ -177,7 +190,8 @@
                             text: '<i class="ti ti-file-export me-1"></i> Export Xlsx',
                             className: 'dropdown-item',
                             action: function() {
-                                window.location.href = '{{ route('phonebook.contacts.export', $label->id) }}';
+                                window.location.href =
+                                    '{{ route('phonebook.contacts.export', $label->id) }}';
                             }
                         }, {
                             text: '<i class="ti ti-users me-1"></i> Fetch All Group',
@@ -302,7 +316,8 @@
 @push('cssvendor')
     <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
     <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-    <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
+    <link rel="stylesheet"
+        href="{!! asset('assets') !!}/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
     <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
 @endpush
 

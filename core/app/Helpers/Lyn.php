@@ -96,6 +96,21 @@ class Lyn
 
             $table->message = json_encode($data);
             $table->save();
+        } else if ($msg_type == 'textbirthday') {
+            $request->validate([
+                'message' => 'required',
+            ]);
+
+            $data = [
+                'message' => $request->message,
+            ];
+
+            if ($request->quoted == 'yes') {
+                $data['quoted'] = $request->quoted;
+            }
+
+            $table->message = json_encode($data);
+            $table->save();
         } else if ($msg_type == 'media') {
             $request->validate([
                 'media' => 'required',

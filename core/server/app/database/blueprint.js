@@ -233,7 +233,7 @@ module.exports = {
                     type: DataTypes.STRING,
                     allowNull: true,
                 },
-                dob: {
+                tgljt: {
                     type: DataTypes.STRING,
                     allowNull: true,
                 },
@@ -242,6 +242,14 @@ module.exports = {
                     allowNull: true,
                 },
                 baghas: {
+                    type: DataTypes.STRING,
+                    allowNull: true,
+                },
+                dob: {
+                    type: DataTypes.STRING,
+                    allowNull: true,
+                },
+                age: {
                     type: DataTypes.STRING,
                     allowNull: true,
                 },

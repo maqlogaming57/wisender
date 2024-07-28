@@ -28,7 +28,7 @@ class Bulk extends CampaignsDatabase {
 
         eventEmitter.on("campaigns", async (res) => {
             if (res !== this.session) return;
-            console.log('triger-campaigns');
+            // console.log('triger-campaigns');
             return this.set_cron_schedule();
         });
     }
@@ -79,12 +79,12 @@ class Bulk extends CampaignsDatabase {
                     message: this.current_campaign.message,
                 });
 
-                // if (i === getbulk.length - 1) {
-                //     this.campaigns_runing = 'none';
-                //     console.log('Campaigns completed.');
-                //     await new CampaignsDatabase().updateCampaign(this.current_campaign.id, 'completed');
-                //     break
-                // }
+                if (i === getbulk.length - 1) {
+                    this.campaigns_runing = 'none';
+                    console.log('Campaigns completed.');
+                    await new CampaignsDatabase().updateCampaign(this.current_campaign.id, 'completed');
+                    break
+                }
                 await new Promise((resolve) =>
                     setTimeout(resolve, parseInt(delay))
                 );
@@ -106,7 +106,7 @@ class Bulk extends CampaignsDatabase {
                         this.bulkdb.updateBulk(row.id, "failed");
                     });
                 break;
-                case "textbill":
+            case "textbill":
                 ilsya
                     .sendText(this.filterMessage(data.message, row))
                     .then(() => {
@@ -117,7 +117,18 @@ class Bulk extends CampaignsDatabase {
                         this.bulkdb.updateBulk(row.id, "failed");
                     });
                 break;
-                case "textbaghas":
+            case "textbaghas":
+                    ilsya
+                        .sendText(this.filterMessage(data.message, row))
+                        .then(() => {
+                            this.bulkdb.updateBulk(row.id, "sent");
+                        })
+                        .catch((e) => {
+                            console.log(e);
+                            this.bulkdb.updateBulk(row.id, "failed");
+                        });
+                    break;
+            case "textbirthday":
                     ilsya
                         .sendText(this.filterMessage(data.message, row))
                         .then(() => {
@@ -224,14 +235,20 @@ class Bulk extends CampaignsDatabase {
         while (message.includes("{billing}")) {
             message = message.replace("{billing}", row.receiver_billing);
         }
-        while (message.includes("{dob}")) {
-            message = message.replace("{dob}", row.dob);
+        while (message.includes("{tgljt}")) {
+            message = message.replace("{tgljt}", row.baghas);
         }
         while (message.includes("{nodep}")) {
             message = message.replace("{nodep}", row.nodep);
         }
         while (message.includes("{baghas}")) {
             message = message.replace("{baghas}", row.baghas);
+        }
+        while (message.includes("{dob}")) {
+            message = message.replace("{dob}", row.dob);
+        }
+        while (message.includes("{age}")) {
+            message = message.replace("{age}", row.age);
         }
 
         // ex string {{Hai|Hello}} then random choose

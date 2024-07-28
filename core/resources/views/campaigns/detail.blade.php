@@ -7,12 +7,14 @@
     <div class="nav-align-top mb-4">
         <ul class="nav nav-pills mb-3 nav-fill" role="tablist">
             <li class="nav-item">
-                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#tab-info" aria-controls="info" aria-selected="true">
+                <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" data-bs-target="#tab-info"
+                    aria-controls="info" aria-selected="true">
                     <i class="tf-icons ti ti-brand-whatsapp ti-xs me-1"></i> Info
                 </button>
             </li>
             <li class="nav-item">
-                <button type="button" class="nav-link is-button-table-reload" role="tab" data-bs-toggle="tab" data-bs-target="#tab-bulk" aria-controls="bulk" aria-selected="false">
+                <button type="button" class="nav-link is-button-table-reload" role="tab" data-bs-toggle="tab"
+                    data-bs-target="#tab-bulk" aria-controls="bulk" aria-selected="false">
                     <i class="tf-icons ti ti-message ti-xs me-1"></i> Bulks
                 </button>
             </li>
@@ -69,10 +71,12 @@
                             <select class="form-select" disabled>
                                 @if ($row->message_type == 'text')
                                     <option selected>Text Message</option>
-                                @if ($row->message_type == 'textbill')
+                                @elseif ($row->message_type == 'textbill')
                                     <option selected>Bill Message</option>
                                 @elseif ($row->message_type == 'textbaghas')
                                     <option seected>Baghas Message</option>
+                                @elseif ($row->message_type == 'textbirthday')
+                                    <option seected>Birthday Message</option>
                                 @elseif ($row->message_type == 'media')
                                     <option selected>Media Message</option>
                                 @elseif ($row->message_type == 'button')
@@ -84,21 +88,31 @@
                     <div class="col-12 col-xl-6 col-lg-6">
                         <div class="mb-3">
                             <label class="form-label">Summary</label>
-                            <span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="11" style="width: 583px;">
+                            <span class="select2 select2-container select2-container--default" dir="ltr"
+                                data-select2-id="11" style="width: 583px;">
                                 <span class="selection">
-                                    <span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false">
+                                    <span class="select2-selection select2-selection--multiple" role="combobox"
+                                        aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false">
                                         <ul class="select2-selection__rendered">
-                                            <li class="select2-selection__choice bg-label-warning" style="padding-right: 10px;">
-                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'pending')->count()) }} Pending
+                                            <li class="select2-selection__choice bg-label-warning"
+                                                style="padding-right: 10px;">
+                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'pending')->count()) }}
+                                                Pending
                                             </li>
-                                            <li class="select2-selection__choice bg-label-success" style="padding-right: 10px;">
-                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'sent')->count()) }} Sent
+                                            <li class="select2-selection__choice bg-label-success"
+                                                style="padding-right: 10px;">
+                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'sent')->count()) }}
+                                                Sent
                                             </li>
-                                            <li class="select2-selection__choice bg-label-danger" style="padding-right: 10px;">
-                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'failed')->count()) }} Failed
+                                            <li class="select2-selection__choice bg-label-danger"
+                                                style="padding-right: 10px;">
+                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'failed')->count()) }}
+                                                Failed
                                             </li>
-                                            <li class="select2-selection__choice bg-label-secondary" style="padding-right: 10px;">
-                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'invalid')->count()) }} Invalid
+                                            <li class="select2-selection__choice bg-label-secondary"
+                                                style="padding-right: 10px;">
+                                                {{ \App\Helpers\Lyn::thousandsCurrencyFormat($row->bulk()->where('status', 'invalid')->count()) }}
+                                                Invalid
                                             </li>
                                         </ul>
                                     </span>
@@ -113,27 +127,40 @@
                             </div>
                         </div>
                     @elseif ($row->message_type == 'textbaghas')
-                    <div class="col-12">
-                        <div class="mb-3"><label class="form-label">Message</label>
-                            <textarea name="message" rows="20" class="form-control" required disabled>{!! $data->message !!}</textarea>
+                        <div class="col-12">
+                            <div class="mb-3"><label class="form-label">Message</label>
+                                <textarea name="message" rows="20" class="form-control" required disabled>{!! $data->message !!}</textarea>
+                            </div>
                         </div>
-                    </div>
+                    @elseif ($row->message_type == 'textbirthday')
+                        <div class="col-12">
+                            <div class="mb-3"><label class="form-label">Message</label>
+                                <textarea name="message" rows="20" class="form-control" required disabled>{!! $data->message !!}</textarea>
+                            </div>
+                        </div>
                     @elseif ($row->message_type == 'media')
                         <div class="col-12 col-xl-6 col-lg-6">
                             <div class="mb-3"><label class="form-label">Media</label>
                                 <div class="input-group">
-                                    <input disabled type="text" class="form-control" value="{{ $data->url }}" name="media" required>
-                                    <button class="btn btn-primary waves-effect is-button-preview" type="button">Preview</button>
+                                    <input disabled type="text" class="form-control" value="{{ $data->url }}"
+                                        name="media" required>
+                                    <button class="btn btn-primary waves-effect is-button-preview"
+                                        type="button">Preview</button>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-xl-6 col-lg-6">
                             <div class="mb-3">
-                                <label class="form-label">Media Mime</label><select disabled name="media_type" required class="form-select">
-                                    <option {{ $data->media_type == 'image' ? 'selected' : '' }} value="image">Image</option>
-                                    <option {{ $data->media_type == 'video' ? 'selected' : '' }} value="video">Video</option>
-                                    <option {{ $data->media_type == 'audio' ? 'selected' : '' }} value="audio">Audio</option>
-                                    <option {{ $data->media_type == 'file' ? 'selected' : '' }} value="file">File</option>
+                                <label class="form-label">Media Mime</label><select disabled name="media_type" required
+                                    class="form-select">
+                                    <option {{ $data->media_type == 'image' ? 'selected' : '' }} value="image">Image
+                                    </option>
+                                    <option {{ $data->media_type == 'video' ? 'selected' : '' }} value="video">Video
+                                    </option>
+                                    <option {{ $data->media_type == 'audio' ? 'selected' : '' }} value="audio">Audio
+                                    </option>
+                                    <option {{ $data->media_type == 'file' ? 'selected' : '' }} value="file">File
+                                    </option>
                                 </select>
                             </div>
                         </div>
@@ -152,7 +179,8 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">Footer</label>
-                                <input name="footer" class="form-control" disabled value="{{ $data->footer }}" required autocomplete="off">
+                                <input name="footer" class="form-control" disabled value="{{ $data->footer }}" required
+                                    autocomplete="off">
                             </div>
                         </div>
                         <div class="col-12">
@@ -169,9 +197,12 @@
                                         <tbody class="table-border-bottom-0 is-content">
                                             @foreach ($data->buttons as $btn)
                                                 <tr>
-                                                    <td><input type="text" disabled class="form-control" required value="{{ $btn->display ?? '' }}"></td>
-                                                    <td><input type="text" disabled class="form-control" required value="{{ $btn->id ?? '' }}"></td>
-                                                    <td><button class="btn btn-label-danger" disabled type="button"><i class="ti ti-trash-x"></i></button></td>
+                                                    <td><input type="text" disabled class="form-control" required
+                                                            value="{{ $btn->display ?? '' }}"></td>
+                                                    <td><input type="text" disabled class="form-control" required
+                                                            value="{{ $btn->id ?? '' }}"></td>
+                                                    <td><button class="btn btn-label-danger" disabled type="button"><i
+                                                                class="ti ti-trash-x"></i></button></td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -183,7 +214,8 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">Title</label>
-                                <input name="title" class="form-control" value="{{ $data->title }}" required autocomplete="off">
+                                <input name="title" class="form-control" value="{{ $data->title }}" required
+                                    autocomplete="off">
                             </div>
                         </div>
                         <div class="col-12">
@@ -195,12 +227,14 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label class="form-label">Footer</label>
-                                <input name="footer" class="form-control" value="{{ $data->footer }}" required autocomplete="off">
+                                <input name="footer" class="form-control" value="{{ $data->footer }}" required
+                                    autocomplete="off">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="mb-3"><label class="form-label">Button Text</label>
-                                <input name="button_text" class="form-control" value="{{ $data->buttonText }}" required placeholder="Click Here" autocomplete="off">
+                                <input name="button_text" class="form-control" value="{{ $data->buttonText }}" required
+                                    placeholder="Click Here" autocomplete="off">
                             </div>
                         </div>
                         <div class="col-12">
@@ -224,12 +258,17 @@
                                                                 <option selected value="section">Section</option>
                                                             </select>
                                                         </td>
-                                                        <td><input type="text" disabled class="form-control" value="{{ $btn->title ?? '' }}" placeholder="Ex: Menu Click Me" required=""></td>
+                                                        <td><input type="text" disabled class="form-control"
+                                                                value="{{ $btn->title ?? '' }}"
+                                                                placeholder="Ex: Menu Click Me" required=""></td>
                                                         <td data-input-btn-id>
-                                                            <input style="display: none" type="text" disabled value="display" placeholder="Ex: !menu" class="form-control" required="">
+                                                            <input style="display: none" type="text" disabled
+                                                                value="display" placeholder="Ex: !menu" class="form-control"
+                                                                required="">
                                                             <div>-</div>
                                                         </td>
-                                                        <td><button class="btn btn-label-danger" disabled type="button"><i class="ti ti-trash-x"></i></button></td>
+                                                        <td><button class="btn btn-label-danger" disabled type="button"><i
+                                                                    class="ti ti-trash-x"></i></button></td>
                                                     </tr>
                                                 @endisset
                                                 @foreach ($btn->rows as $resbtn)
@@ -240,9 +279,15 @@
                                                                 <option value="section">Section</option>
                                                             </select>
                                                         </td>
-                                                        <td><input type="text" class="form-control" disabled value="{{ $resbtn->title ?? '' }}" placeholder="Ex: Menu Click Me" required=""></td>
-                                                        <td data-input-btn-id><input type="text" disabled value="{{ $resbtn->rowId ?? '' }}" placeholder="Ex: !menu" class="form-control" required=""></td>
-                                                        <td><button disabled class="btn btn-label-danger" type="button"><i class="ti ti-trash-x"></i></button></td>
+                                                        <td><input type="text" class="form-control" disabled
+                                                                value="{{ $resbtn->title ?? '' }}"
+                                                                placeholder="Ex: Menu Click Me" required=""></td>
+                                                        <td data-input-btn-id><input type="text" disabled
+                                                                value="{{ $resbtn->rowId ?? '' }}"
+                                                                placeholder="Ex: !menu" class="form-control"
+                                                                required=""></td>
+                                                        <td><button disabled class="btn btn-label-danger"
+                                                                type="button"><i class="ti ti-trash-x"></i></button></td>
                                                     </tr>
                                                 @endforeach
                                             @endforeach
@@ -323,13 +368,18 @@
                     $("#modal-preview .modal-body").html(`<img src="${url}" class="img-fluid" alt="">`)
                     break
                 case 'video':
-                    $("#modal-preview .modal-body").html(`<div class="text-center"><video style="width: 100%;" controls><source  src="${url}" type="video/mp4">Your browser does not support the video tag.</video></div>`)
+                    $("#modal-preview .modal-body").html(
+                        `<div class="text-center"><video style="width: 100%;" controls><source  src="${url}" type="video/mp4">Your browser does not support the video tag.</video></div>`
+                    )
                     break
                 case 'audio':
-                    $("#modal-preview .modal-body").html(`<div class="text-center"><audio controls><source src="${url}" type="audio/mpeg">Your browser does not support the audio element.</audio></div>`)
+                    $("#modal-preview .modal-body").html(
+                        `<div class="text-center"><audio controls><source src="${url}" type="audio/mpeg">Your browser does not support the audio element.</audio></div>`
+                    )
                     break
                 case 'file':
-                    $("#modal-preview .modal-body").html(`<div class="text-center"><a href="${url}" class="btn btn-primary">Download</a></div>`)
+                    $("#modal-preview .modal-body").html(
+                        `<div class="text-center"><a href="${url}" class="btn btn-primary">Download</a></div>`)
                     break
             }
         })
@@ -346,8 +396,10 @@
 
 @push('cssvendor')
     <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-    <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-    <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
+    <link rel="stylesheet"
+        href="{!! asset('assets') !!}/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet"
+        href="{!! asset('assets') !!}/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
     <link rel="stylesheet" href="{!! asset('assets') !!}/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
 @endpush
 

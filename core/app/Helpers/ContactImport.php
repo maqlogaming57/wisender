@@ -28,6 +28,12 @@ class ContactImport implements ToCollection
             if ($index == 0) {
                 continue;
             }
+            if (empty(array_filter($row->toArray()))) {
+                continue;
+            }
+            if (empty($row[1])) {
+                continue;
+            }
             if (Contact::where([
                 'user_id' => $this->user,
                 'session_id' => $this->session_id,
@@ -39,12 +45,14 @@ class ContactImport implements ToCollection
                 'user_id' => $this->user,
                 'session_id' => $this->session_id,
                 'label_id' => $this->tag,
-                'name' => $row[0],
+                'name' => $row[0] ?? '',
                 'number' => (string)$row[1],
-                'billing' => (string)$row[2],
-                'dob' => (string)$row[3],
-                'nodep' => (string)$row[4],
-                'baghas' => (string)$row[5]
+                'billing' => $row[2] ?? '',
+                'tgljt' => $row[3] ?? '',
+                'nodep' => $row[4] ?? '',
+                'baghas' => $row[5] ?? '',
+                'dob' => $row[6] ?? '',
+                'age' => $row[7] ?? '',
             ]);
         }
     }
