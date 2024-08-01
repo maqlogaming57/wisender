@@ -46,7 +46,7 @@
                             <th>Number</th>
                             <th>Billing</th>
                             <th>jatuh Tempo</th>
-                            <th>Nodep</th>
+                            <th>Nodep / Norek</th>
                             <th>Baghas</th>
                             <th>DOB</th>
                             <th>Age</th>
