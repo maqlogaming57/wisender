@@ -41,7 +41,7 @@ $("select[name='message_type']").on('change', function () {
       break;
     case 'media':
       html +=
-        '<div class="col-12 col-xl-6 col-lg-6"><div class="mb-3"><label class="form-label">Media</label><div class="input-group"><input type="text" class="form-control" name="media" placeholder="Example : {{Hai|Hello}} {name}, your number is {number} registered at wisender.com" required><button class="btn btn-primary waves-effect filemanagerilsya" type="button">Upload</button></div></div></div>';
+        '<div class="col-12 col-xl-6 col-lg-6"><div class="mb-3"><label class="form-label">Media</label><div class="input-group"><input type="text" class="form-control" name="media" placeholder="Example : {{Hai|Hello}} {name}, your number is {number}" required><button class="btn btn-primary waves-effect filemanagerilsya" type="button">Upload</button></div></div></div>';
       html +=
         '<div class="col-12 col-xl-6 col-lg-6"><div class="mb-3"><label class="form-label">Media Mime</label><select name="media_type" required class="form-select"><option value="">-- Select One --</option><option value="image">Image</option><option value="video">Video</option><option value="audio">Audio</option><option value="file">File</option></select></div></div>';
       html +=
@@ -63,7 +63,7 @@ $("select[name='message_type']").on('change', function () {
       html +=
         '<div class="col-12"><div class="mb-3"><label class="form-label">Title</label><input name="title" class="form-control" autocomplete="off"></div></div>';
       html +=
-        '<div class="col-12"><div class="mb-3"><label class="form-label">Message</label><textarea name="message" placeholder="Example : {{Hai|Hello}} {name}, your number is {number} registered at wisender.com" rows="6" class="form-control" required></textarea></div></div>';
+        '<div class="col-12"><div class="mb-3"><label class="form-label">Message</label><textarea name="message" placeholder="Example : {{Hai|Hello}} {name}, your number is {number} " rows="6" class="form-control" required></textarea></div></div>';
       html +=
         '<div class="col-12"><div class="mb-3"><label class="form-label">Footer</label><input name="footer" class="form-control" required autocomplete="off"></div></div>';
       html +=
