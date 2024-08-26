@@ -13,7 +13,7 @@ class app {
         this.app = express();
         this.plugins();
         this.routes();
-        this.lv = '4.5.0';
+        this.lv = '5.0.0';
     }
 
     plugins() {
@@ -27,6 +27,7 @@ class app {
                     logger('warning', '[VERSION] NEW VERSION AVAILABLE: ' + res.data.version)
                     if (res.data.required_update) {
                         logger('warning', '[VERSION] REQUIRED UPDATE: ' + res.data.version)
+                        logger('warning', 'Contact Whatsapp Admin : 628574902345')
                         process.exit(0);
                     }
                 }

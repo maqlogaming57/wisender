@@ -1,7 +1,7 @@
 {
-    "name": "wisender",
-    "version": "4.5.0",
-    "description": "Whatsapp Gateway Sever By Wisender",
+    "name": "wisender-wisender",
+    "version": "5.0.0",
+    "description": "Whatsapp Gateway Sever By wisender",
     "main": "index.js",
     "type": "commonjs",
     "directories": {
@@ -13,14 +13,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/bincrypto"
+        "url": "https://github.com/ilsyaa"
     },
     "author": "wisender",
     "license": "ISC",
     "dependencies": {
         "@adiwajshing/keyed-db": "^0.2.4",
-        "@whiskeysockets/baileys": "^6.5.0",
         "@ptkdev/logger": "^1.8.0",
+        "@whiskeysockets/baileys": "^6.5.0",
         "axios": "^0.27.2",
         "dotenv": "^16.0.3",
         "events": "^3.3.0",

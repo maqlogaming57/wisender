@@ -90,29 +90,29 @@
             </a>
         </li>
         @if ($auth->role == 'admin')
-        <li class="menu-item {{ Route::is('admin*') ? 'active' : '' }}">
-            <a href="javascript:void(0)" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-brand-tabler" style="margin-bottom: 2px;"></i>
-                <div data-i18n="Admin Menu">Admin Menu</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="{!! route('admin.users') !!}" class="menu-link">
-                        <div data-i18n="Manage Users">Manage Users</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item">
+            <li class="menu-item {{ Route::is('admin*') ? 'active' : '' }}">
+                <a href="javascript:void(0)" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons ti ti-brand-tabler" style="margin-bottom: 2px;"></i>
+                    <div data-i18n="Admin Menu">Admin Menu</div>
+                </a>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="{!! route('admin.users') !!}" class="menu-link">
+                            <div data-i18n="Manage Users">Manage Users</div>
+                        </a>
+                    </li>
+                    {{-- <li class="menu-item">
                         <a href="{!! route('admin.settings') !!}" class="menu-link">
                             <div data-i18n="Settings">Settings</div>
                         </a>
                     </li> --}}
-            </ul>
-        </li>
+                </ul>
+            </li>
         @endif
         <li class="menu-item">
-            <a href="https://wisender.com/" class="menu-link">
+            <a href="#" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-code" style="margin-bottom: 2px;"></i>
-                <div data-i18n="Version 3.0.0">Version 4.x</div>
+                <div data-i18n="Version 3.0.0">Version 5.x</div>
                 <div class="badge bg-label-success rounded-pill ms-auto">Current</div>
             </a>
         </li>
