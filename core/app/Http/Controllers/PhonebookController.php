@@ -226,10 +226,19 @@ class PhonebookController extends Controller
 
     public function contacts_import(Request $request, $id)
     {
-        if (!session()->get('main_device')) return response()->json(['message' => 'No device selected'], 400);
-        if (!$request->hasFile('file')) return response()->json(['message' => 'File not found.'], 400);
+        if (!session()->get('main_device')) {
+            return response()->json(['message' => 'No device selected'], 400);
+        }
+
+        if (!$request->hasFile('file')) {
+            return response()->json(['message' => 'File not found. Please upload a valid file.'], 400);
+        }
+
         $request->validate([
             'file' => 'required|mimes:xlsx'
+        ], [
+            'file.required' => 'The file field is required.',
+            'file.mimes' => 'The file must be an Excel file with .xlsx extension.'
         ]);
 
         try {
@@ -238,15 +247,18 @@ class PhonebookController extends Controller
                 'user_id' => auth()->user()->id,
                 'session_id' => session()->get('main_device')
             ])->first();
-            if (!$label) return response()->json(['message' => 'Label not found.'], 400);
+
+            if (!$label) {
+                return response()->json(['message' => 'Label not found. Please ensure the label exists.'], 400);
+            }
 
             Excel::import(new ContactImport($label->id, auth()->user()->id, session()->get('main_device')), $request->file('file')->store('temp'));
 
             return response()->json([
-                'message' => 'Contacts imported.',
+                'message' => 'Contacts imported successfully.',
             ], 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Something went wrong'], 400);
+            return response()->json(['message' => 'An error occurred: ' . $e->getMessage()], 400);
         }
     }
 

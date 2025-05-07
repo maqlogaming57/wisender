@@ -1,4 +1,7 @@
 <IfModule mod_rewrite.c>
+    # Set Node.js environment variables
+    SetEnv NODE_ENV production
+    SetEnv NODE_OPTIONS "--max-old-space-size=2048"
     RewriteEngine On
     RewriteRule ^$ - [F]
 </IfModule>

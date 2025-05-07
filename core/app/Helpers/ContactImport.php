@@ -34,12 +34,12 @@ class ContactImport implements ToCollection
             if (empty($row[1])) {
                 continue;
             }
-            if (Contact::where([
-                'user_id' => $this->user,
-                'session_id' => $this->session_id,
-                'label_id' => $this->tag,
-                'number' => (string)$row[1],
-            ])->count() > 0) continue;
+            // if (Contact::where([
+            //     'user_id' => $this->user,
+            //     'session_id' => $this->session_id,
+            //     'label_id' => $this->tag,
+            //     'number' => (string)$row[1],
+            // ])->count() > 0) continue;
 
             Contact::create([
                 'user_id' => $this->user,

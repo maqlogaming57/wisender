@@ -146,7 +146,13 @@
                         data: 'number'
                     },
                     {
-                        data: 'billing'
+                        data: 'billing',
+                        render: function(data, type, row) {
+                            if (type === 'display' || type === 'filter') {
+                                return formatRupiah(data);
+                            }
+                            return data;
+                        }
                     },
                     {
                         data: 'tgljt'
@@ -154,8 +160,14 @@
                     {
                         data: 'nodep'
                     },
-                    {
-                        data: 'baghas'
+                    { 
+                        data: 'baghas',
+                        render: function(data, type, row) {
+                            if (type === 'display' || type === 'filter') {
+                                return formatRupiah(data);
+                            }
+                            return data;
+                        }
                     },
                     {
                         data: 'dob'
@@ -309,6 +321,9 @@
                 })
             })
 
+            function formatRupiah(angka) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(angka);
+        }
         })()
     </script>
 @endpush
