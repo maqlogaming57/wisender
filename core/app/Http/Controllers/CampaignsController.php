@@ -167,10 +167,10 @@ class CampaignsController extends Controller
                     'campaign_id' => $campaign->id,
                     'receiver_name' => $row->name,
                     'receiver' => $row->number,
-                    'receiver_billing' => $row->billing,
+                    'receiver_billing' => number_format($row->billing, 0, ',', '.'),
                     'tgljt' => $row->tgljt,
                     'nodep' => $row->nodep,
-                    'baghas' => $row->baghas,
+                    'baghas' => number_format($row->baghas, 0, ',', '.'), // tambahkan format di sini
                     'dob' => $row->dob,
                     'age' => $row->age,
                     'message_type' => $request->message_type,
