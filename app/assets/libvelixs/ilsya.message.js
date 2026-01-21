@@ -25,7 +25,7 @@ $("select[name='message_type']").on('change', function () {
       break;
     case 'textbaghas':
       html +=
-        '<div class="col-12"><div class="mb-3"><label class="form-label">Message</label><textarea name="message" rows="20" class="form-control" required>Assalamu\'alaikum Wr. Wb.\nYth. Bapak/Ibu {name},\n\nSemoga Bapak/Ibu selalu dalam keadaan sehat dan dalam lindungan Allah SWT. Kami dari PT BPRS Hikmah Bahari menginfromasikan bahwa bagi hasil bulan ini sudah didistribusikan ke rekening Bapak/Ibu sebesar Rp {baghas}.\n\nJika Bapak/Ibu memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, silakan menghubungi layanan pelanggan kami di nomor https://wa.me/6287819353702 \n\nTerima kasih atas perhatian dan kerjasama Bapak/Ibu. Semoga Allah SWT senantiasa memberikan keberkahan kepada kita semua.\n\nWassalamu\'alaikum Wr. Wb.\n</textarea></div></div>';
+        '<div class="col-12"><div class="mb-3"><label class="form-label">Message</label><textarea name="message" rows="20" class="form-control" required>Assalamu\'alaikum Wr. Wb.\nYth. Bapak/Ibu {name},\n\nSemoga Bapak/Ibu selalu dalam keadaan sehat dan dalam lindungan Allah SWT. Kami dari PT BPRS Hikmah Bahari menginfromasikan bahwa bagi hasil bulan ini dengan nomor deposito {nodep} sudah didistribusikan ke rekening Bapak/Ibu sebesar Rp {baghas}.\n\nJika Bapak/Ibu memiliki pertanyaan atau membutuhkan bantuan lebih lanjut, silakan menghubungi layanan pelanggan kami di nomor :\n\nhttps://wa.me/6287819353702 (DEVI)\nhttps://wa.me/6285925112366 (AFIF)\n\nTerima kasih atas perhatian dan kerjasama Bapak/Ibu. Semoga Allah SWT senantiasa memberikan keberkahan kepada kita semua.\n\nWassalamu\'alaikum Wr. Wb.\n</textarea></div></div>';
       break;
     case 'textbirthday':
       html +=

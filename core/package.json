@@ -37,7 +37,7 @@
     },
     "devDependencies": {
         "@hapi/boom": "^10.0.1",
-        "jimp": "^0.16.1",
+        "jimp": "^1.6.0",
         "node-cron": "^3.0.2",
         "pino": "^7.6.5",
         "qrcode-terminal": "^0.12.0"

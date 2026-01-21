@@ -17,7 +17,10 @@ const serverHttp = server.app.listen(port || 5570, hostname, () => {
 });
 
 server.app.get("/", (req, res) => {
-    res.redirect(process.env.BASE_NODE + '/app');
+    // Redirect root to the Laravel/PHP front-end app.
+    // Default to http://localhost/wisend/app when APP_URL is not set.
+    const target = process.env.APP_URL ? (process.env.APP_URL.replace(/\/$/, '') + '/app') : 'http://localhost/wisend/app';
+    res.redirect(target);
 });
 
 const io = new Server(serverHttp)
